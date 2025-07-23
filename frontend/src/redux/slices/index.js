@@ -1,0 +1,1 @@
+export { default as ingredientsSlice } from "./Ingredients/slice"
