@@ -1,24 +1,54 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { routeslist } from "../utilities/RoutesList";
+import { Header, Sidebar } from "../components";
+import { useAuth } from "../context/AuthContext";
+import s from "./routes.module.scss";
+
+const Layout = ({ children }) => {
+  const { isAuthenticated } = useAuth();
+  const location = useLocation();
+
+  // Login sayfasında layout gösterme
+  if (location.pathname === '/login') {
+    return children;
+  }
+
+  // Kullanıcı giriş yapmamışsa layout gösterme
+  if (!isAuthenticated) {
+    return children;
+  }
+
+  return (
+    <div className={s.layout}>
+      <Sidebar />
+      <div className={s.mainContent}>
+        <Header />
+        <main className={s.content}>
+          {children}
+        </main>
+      </div>
+    </div>
+  );
+};
 
 const RoutesComp = () => {
   return (
-    <div>
-      <Router>
+    <Router>
+      <Layout>
         <Routes>
           {routeslist.map((route, index) => {
             return (
               <Route
                 key={index}
                 path={route?.path}
-                component={route?.component}
+                element={route?.element}
               />
             );
           })}
         </Routes>
-      </Router>
-    </div>
+      </Layout>
+    </Router>
   );
 };
 

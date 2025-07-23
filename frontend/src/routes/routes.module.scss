@@ -1,0 +1,37 @@
+@use "../assets/styles/Settings/colors";
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: colors.$white-light;
+}
+
+.mainContent {
+  flex: 1;
+  margin-left: 250px; // Sidebar genişliği
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  padding: 32px;
+  margin-top: 70px; // Header yüksekliği
+  background: colors.$white;
+  border-radius: 8px;
+  margin: 90px 32px 32px 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - 90px - 64px);
+}
+
+// Responsive tasarım
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 0;
+  }
+
+  .content {
+    margin: 80px 16px 16px 16px;
+    padding: 16px;
+  }
+} 

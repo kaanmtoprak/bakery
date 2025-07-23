@@ -1,0 +1,122 @@
+@use "../../assets/styles/Settings/colors";
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(135deg, colors.$purple-base 0%, colors.$purple-dark 100%);
+  color: colors.$white;
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  transition: all 0.3s ease;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.logo {
+  padding: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: colors.$white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.nav {
+  padding: 16px 0;
+}
+
+.menuList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menuItem {
+  margin: 4px 0;
+}
+
+.menuLink {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: colors.$white;
+    border-left-color: rgba(255, 255, 255, 0.3);
+  }
+
+  &.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: colors.$white;
+    border-left-color: colors.$white;
+    font-weight: 600;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.menuText {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+// Responsive tasarım
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+    transform: translateX(-100%);
+    
+    &.open {
+      transform: translateX(0);
+    }
+  }
+
+  .logo h2 {
+    font-size: 20px;
+  }
+
+  .menuLink {
+    padding: 8px 16px;
+  }
+
+  .menuText {
+    font-size: 14px;
+  }
+}

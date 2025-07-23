@@ -1,0 +1,123 @@
+@use "../../assets/styles/Settings/colors";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 250px; // Sidebar genişliği kadar sağa kaydır
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: colors.$white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid colors.$white-dark;
+  height: 70px;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.menuButton {
+  display: none; // Mobilde gösterilecek
+  background: none;
+  border: none;
+  font-size: 19px;
+  color: colors.$black;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: colors.$white-light;
+  }
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: colors.$purple-base;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: colors.$white-light;
+  border-radius: 8px;
+  border: 1px solid colors.$white-dark;
+}
+
+.userIcon {
+  color: colors.$purple-base;
+  font-size: 18px;
+}
+
+.username {
+  color: colors.$black;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: colors.$red-base;
+  color: colors.$white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(233, 68, 53, 0.2);
+
+  &:hover {
+    background: colors.$red-dark;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(233, 68, 53, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Responsive tasarım
+@media (max-width: 768px) {
+  .header {
+    left: 0;
+    padding: 16px;
+  }
+
+  .menuButton {
+    display: block;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .username {
+    display: none; // Mobilde gizle
+  }
+
+  .logoutButton span {
+    display: none; // Mobilde sadece icon göster
+  }
+}

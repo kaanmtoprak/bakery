@@ -1,0 +1,14 @@
+$breakpoints: (
+    phone: 767.8px,
+    tablet: 900px,
+    desktop: 1248.5px
+);
+
+@mixin respond-to($device) {
+    @if map-has-key($breakpoints, $device) {
+        $value: map-get($breakpoints, $device);
+        @media screen and (max-width: $value) {
+            @content;
+        }
+    }
+}

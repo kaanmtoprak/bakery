@@ -1,0 +1,80 @@
+@use "@p-common-pack/colors";
+@use "@p-common-pack/screens";
+
+.layout {
+    background: colors.$neutral-100;
+    width: 100%;
+    min-height: 100dvh;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas: "header header" "aside main";
+    grid-template-columns: 272px 4fr;
+    grid-template-rows: 80px 5fr;
+
+    @include screens.tablet {
+        grid-template-columns: 80px 4fr;
+    }
+    @include screens.phone {
+        grid-template-columns: 100%;
+        grid-template-areas: "header" "main";
+    }
+
+    &--demo {
+        grid-template-areas: "demo demo" "header header" "aside main" !important;
+        grid-template-rows: 50px 80px 5fr !important;
+
+        .header--demo {
+            // height: 50px;
+            grid-area: demo;
+        }
+
+        @include screens.tablet {
+            grid-template-columns: 80px 4fr;
+        }
+        @include screens.phone {
+            grid-template-columns: 100%;
+            grid-template-areas: "demo" "header" "main";
+            grid-template-rows: 70px 80px 5fr;
+            .header--demo {
+                height: 70px;
+                grid-area: demo;
+            }
+        }
+    }
+
+    header {
+        grid-area: header;
+    }
+
+    aside {
+        grid-area: aside;
+        @include screens.phone {
+            display: none;
+        }
+    }
+
+    main {
+        grid-area: main;
+        padding: 16px 32px;
+        overflow-y: auto;
+
+        @include screens.phone {
+            padding: 20px 12px;
+        }
+
+        > .create-paylink {
+            height: 100%;
+
+            .box {
+                min-height: calc(100% - 84px);
+            }
+        }
+    }
+    footer {
+        display: none;
+        height: 93px;
+        @include screens.phone {
+            display: block;
+        }
+    }
+}

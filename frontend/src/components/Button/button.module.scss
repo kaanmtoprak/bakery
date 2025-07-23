@@ -1,0 +1,82 @@
+@use "../../assets/styles/Settings/colors";
+@use "../../assets/styles/Settings/mixins";
+@use "../../assets/styles/Settings/screens";
+
+.button {
+  height: 40px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 8px 16px;
+  border: none;
+  width: max-content;
+
+  &:disabled {
+    background-color: colors.$grey;
+    cursor: not-allowed;
+
+    .text {
+      color: colors.$black;
+    }
+  }
+
+  span {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+}
+
+.buttonDisabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.buttonLeftIcon {
+  @include mixins.flex(center, center);
+  gap: 8px;
+}
+
+.buttonSmall {
+  height: 32px;
+  padding: 4px 12px;
+}
+
+.buttonBig {
+  height: 44px;
+  padding: 8px 24px;
+}
+
+.buttonFull {
+  width: 100%;
+}
+
+.buttonDark {
+  background-color: colors.$black;
+  color: colors.$white;
+  transition-duration: 300ms;
+
+  &:hover {
+    background-color: colors.color-opacity(colors.$black, 50);
+    color: colors.$white;
+  }
+
+  &.buttonDisabled {
+    background-color: colors.$grey;
+    cursor: not-allowed;
+
+    .text {
+      color: colors.$white-light;
+    }
+  }
+}
+
+.buttonLight {
+  background-color: colors.$white;
+  color: colors.$black;
+  border: 1px solid colors.$white-light;
+  transition-duration: 300ms;
+
+  &:hover {
+    background-color: colors.$white-dark;
+  }
+}

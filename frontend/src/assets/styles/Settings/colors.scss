@@ -1,0 +1,66 @@
+@use "sass:map";
+
+//red
+$red-dark: #641b16;
+$red-base: #e94435;
+$red-light: #ffcfcc;
+
+// green
+$green-dark: #1b5f32;
+$green-base: #15c14f;
+$green-light: #caf6d9;
+
+// yellow
+$yellow-dark: #6e5b0c;
+$yellow-base: #f6d551;
+$yellow-light: #fae89e;
+
+// purple
+$purple-dark: #2b1664;
+$purple-base: #6535e9;
+$purple-light: #dcd3f8;
+
+// blue
+$blue-dark: #1b3f5f;
+$blue-base: #35b9e9;
+$blue-light: #d0effb;
+
+
+// decorative
+$decorative-red: #ffc6c2;
+$decorative-green: #cdf4da;
+$decorative-yellow: #fae89e;
+$decorative-warm-yellow: #f6b451;
+$decorative-purple: #dcd3f8;
+$decorative-blue: #d0effb;
+
+// gray
+$grey: #adadad;
+$white: #ffffff;
+$white-light: #f3f3f3;
+$white-dark: #dddddd;
+$black: #000000;
+
+// transparency
+$transparent: #00000000;
+
+/*  Color with opacity */
+
+$opacities: ();
+
+@for $i from 0 through 100 {
+    $opacities: map.merge(
+        $opacities,
+        (
+            $i: $i * 0.01,
+        )
+    );
+}
+
+@function color-opacity($color, $opacity-key) {
+    @if map.has-key($opacities, $opacity-key) {
+        @return rgba($color, map.get($opacities, $opacity-key));
+    } @else {
+        @return $color;
+    }
+}
